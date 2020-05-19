@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [dice, setDice] = useState(1);
+
+	const Clicked = () => {
+		const r = Math.floor(Math.random() * 6) + 1;
+		setDice(r);
+		console.log(r);
+	};
+
+	return (
+		<div className="app">
+			<div className="container">
+				<div className="dice">
+					<img
+						src={require(`./assets/Dice-${dice}.svg`)}
+						alt="dice-1"
+						className="image"
+					/>
+				</div>
+
+				<button onClick={Clicked} className="button">
+					Play Again
+				</button>
+			</div>
+		</div>
+	);
+};
 
 export default App;
